@@ -14,7 +14,7 @@ export const Header = () => {
                             height="30"
                             className="d-inline-block align-top"
                         />{' '}
-                        React Bootstrap
+                        JsonPlaceholdedr
                     </Navbar.Brand>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
@@ -28,6 +28,7 @@ export const Header = () => {
                             <Row>
                                 <Col xs="auto">
                                     <Form.Control
+                                        size='sm'
                                         type="text"
                                         placeholder="Acesso Rápido"
                                         className=" mr-sm-2"
