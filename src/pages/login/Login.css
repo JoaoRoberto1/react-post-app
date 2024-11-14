@@ -1,0 +1,16 @@
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.form-signin {
+    width: 400px;
+    text-align: center;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}

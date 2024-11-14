@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import './Login.css'
 
 const Login = () => {
 
@@ -24,6 +25,7 @@ const Login = () => {
 
     return (
         <>
+        <div className="login-page">
             <main class="form-signin w-100 m-auto">
                 <form onSubmit={handleSubmit}>
                     <img class="mb-4" src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57" />
@@ -48,6 +50,7 @@ const Login = () => {
                         <p class="mt-5 mb-3 text-body-secondary">© 2017–2024</p>
                 </form>
             </main>
+        </div>
         </>
     )
 }
