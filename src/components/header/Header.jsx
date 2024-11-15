@@ -1,10 +1,13 @@
 import React from 'react'
-import { Button, Col, Container, Form, Nav, Navbar, Row } from 'react-bootstrap'
+import { Col, Container, Form, Nav, Navbar, Row } from 'react-bootstrap'
+// import { DataList } from '../autocomplete/DataList'
+import AutoCompleteInput from '../autocomplete/AutoCompleteInput'
+import { routes } from '../../routes/routes'
 
 export const Header = () => {
     return (
         <div>
-            <Navbar className="bg-body-tertiary">
+            <Navbar className="bg-body-tertiary mb-3">
                 <Container>
                     <Navbar.Brand href="/home">
                         <img
@@ -14,7 +17,7 @@ export const Header = () => {
                             height="30"
                             className="d-inline-block align-top"
                         />{' '}
-                        JsonPlaceholdedr
+                        JsonPlaceholder
                     </Navbar.Brand>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
@@ -27,26 +30,30 @@ export const Header = () => {
                         <Form inline>
                             <Row>
                                 <Col xs="auto">
-                                    <Form.Control
+                                   {/* <Form.Control
                                         size='sm'
                                         type="text"
-                                        placeholder="Acesso Rápido"
+                                        placeholder="Acesso rápido"
                                         className=" mr-sm-2"
-                                    />
+                                    /> */}
+                                    {/* <DataList /> */}
+                                    <AutoCompleteInput options={routes}/>
                                 </Col>
                                 <Col xs="auto">
-                                    {/* <Button type="submit">Submit</Button> */}
+                                    <Navbar.Text>
+                                        Signed in as: <a href="#login">Mark Otto</a>
+                                    </Navbar.Text>
                                 </Col>
                             </Row>
                         </Form>
                     </Navbar.Collapse>
 
 
-                    <Navbar.Collapse className="justify-content-end">
+                    {/* <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
                             Signed in as: <a href="#login">Mark Otto</a>
                         </Navbar.Text>
-                    </Navbar.Collapse>
+                    </Navbar.Collapse> */}
                 </Container>
             </Navbar>
         </div>
