@@ -1,6 +1,7 @@
 import React from 'react'
 import { DataGrid } from '@mui/x-data-grid';
 import Paper from '@mui/material/Paper';
+import { CssBaseline, ThemeProvider } from '@mui/material';
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
@@ -36,8 +37,18 @@ const rows = [
 
 const paginationModel = { page: 0, pageSize: 5 };
 
+const theme = createTheme({
+  palette: {
+    mode: isDarkMode ? 'dark' : 'light'
+  }
+})
+
 export default function Table() {
   return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+
+
     <Paper sx={{ height: 400, width: '100%' }}>
       <DataGrid
         rows={rows}
@@ -51,5 +62,6 @@ export default function Table() {
         }}
       />
     </Paper>
+    </ThemeProvider>
   );
 }

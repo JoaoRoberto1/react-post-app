@@ -1,13 +1,32 @@
-import React from 'react'
-import { Col, Container, Form, Nav, Navbar, Row } from 'react-bootstrap'
-// import { DataList } from '../autocomplete/DataList'
-import AutoCompleteInput from '../autocomplete/AutoCompleteInput'
-import { routes } from '../../routes/routes'
+import React, { useEffect, useState } from 'react';
+import { Col, Container, Form, Nav, Navbar, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
+import AutoCompleteInput from '../autocomplete/AutoCompleteInput';
+import { routes } from '../../routes/routes';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import './Header.css';
 
 export const Header = () => {
+    // State to manage the theme (light or dark)
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    // Toggle theme function
+    const toggleTheme = () => {
+        setIsDarkMode(!isDarkMode);
+    };
+
+    // Effect to apply the dark theme to the body element when isDarkMode is true
+    useEffect(() => {
+        if (isDarkMode) {
+            document.body.classList.add('dark-theme'); // Add class for dark theme
+        } else {
+            document.body.classList.remove('dark-theme'); // Remove class for light theme
+        }
+    }, [isDarkMode]);
+
     return (
         <div>
-            <Navbar className="bg-body-tertiary mb-3">
+            <Navbar bg={isDarkMode ? 'dark' : ''} data-bs-theme={isDarkMode ? "dark" : ''} className="bg-body-tertiary mb-3">
                 <Container>
                     <Navbar.Brand href="/home">
                         <img
@@ -30,32 +49,27 @@ export const Header = () => {
                         <Form inline>
                             <Row>
                                 <Col xs="auto">
-                                   {/* <Form.Control
-                                        size='sm'
-                                        type="text"
-                                        placeholder="Acesso rápido"
-                                        className=" mr-sm-2"
-                                    /> */}
-                                    {/* <DataList /> */}
-                                    <AutoCompleteInput options={routes}/>
+                                    <AutoCompleteInput options={routes} />
+                                </Col>
+                                <Col xs="auto">
+                                    
+                                        <FontAwesomeIcon
+                                            className="theme-change"
+                                            color={isDarkMode ? '#146ebe' : '#ffd43b'}
+                                            icon={isDarkMode ? faMoon : faSun}
+                                            onClick={toggleTheme}
+                                        />
                                 </Col>
                                 <Col xs="auto">
                                     <Navbar.Text>
-                                        Signed in as: <a href="#login">Mark Otto</a>
+                                        <a href="#login">Mark Otto</a>
                                     </Navbar.Text>
                                 </Col>
                             </Row>
                         </Form>
                     </Navbar.Collapse>
-
-
-                    {/* <Navbar.Collapse className="justify-content-end">
-                        <Navbar.Text>
-                            Signed in as: <a href="#login">Mark Otto</a>
-                        </Navbar.Text>
-                    </Navbar.Collapse> */}
                 </Container>
             </Navbar>
         </div>
-    )
-}
+    );
+};
